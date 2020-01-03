@@ -248,16 +248,6 @@ public class InputManager : MonoBehaviour
 		return InputManager.ConsoleInput.CircleDown() || Input.GetKeyDown(KeyCode.Escape);
 	}
 
-	// Token: 0x06000587 RID: 1415
-	public InputManager()
-	{
-	}
-
-	// Token: 0x06000588 RID: 1416
-	static InputManager()
-	{
-	}
-
 	// Token: 0x06000768 RID: 1896
 	public static bool RotateObjectXPositive()
 	{
@@ -285,30 +275,37 @@ public class InputManager : MonoBehaviour
 	// Token: 0x060007AF RID: 1967
 	public static bool SmallRotation()
 	{
-		if (!InputManager.MenuIsActive(false) && Input.GetKeyDown(KeyCode.I)) {
-			if (SmallRotationActive){
-				SmallRotationActive = false;
-				return false;
-			}
-			else {
-				SmallRotationActive = true;
-				return true;
-			}
+		if (InputManager.MenuIsActive(false) || !Input.GetKeyDown(KeyCode.I))
+		{
+			return !InputManager.SmallRotationActive;
 		}
-		else {
-			if (SmallRotationActive){
-				return false;
-			}
-			else {
-				return true;
-			}
+		if (InputManager.SmallRotationActive)
+		{
+			InputManager.SmallRotationActive = false;
+			return false;
 		}
+		InputManager.SmallRotationActive = true;
+		return true;
+	}
+
+	// Token: 0x06000830 RID: 2096
+	public static bool FlyInPlayMode()
+	{
+		if (InputManager.MenuIsActive(false) || !Input.GetKeyDown(KeyCode.O))
+		{
+			return !InputManager.FlyInPlayModeActive;
+		}
+		if (InputManager.FlyInPlayModeActive)
+		{
+			InputManager.FlyInPlayModeActive = false;
+			return false;
+		}
+		InputManager.FlyInPlayModeActive = true;
+		return true;
 	}
 
 	// Token: 0x040006D4 RID: 1748
 	private static Vector2 move;
-
-	private static bool SmallRotationActive;
 
 	// Token: 0x040006D5 RID: 1749
 	private static Vector2 moveLerp;
@@ -324,6 +321,12 @@ public class InputManager : MonoBehaviour
 
 	// Token: 0x040006D9 RID: 1753
 	private static Vector2 look;
+
+	// Token: 0x040008BC RID: 2236
+	private static bool SmallRotationActive;
+
+	// Token: 0x04000902 RID: 2306
+	private static bool FlyInPlayModeActive;
 
 	// Token: 0x02000109 RID: 265
 	public static class PcInput
@@ -465,11 +468,6 @@ public class InputManager : MonoBehaviour
 				}
 			}
 			return new Vector2(0f, 0f);
-		}
-
-		// Token: 0x0600059A RID: 1434
-		static TouchInput()
-		{
 		}
 
 		// Token: 0x040006DA RID: 1754
