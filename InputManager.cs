@@ -218,6 +218,28 @@ public class InputManager : MonoBehaviour
 		return !InputManager.MenuIsActive(false) && (InputManager.ConsoleInput.L2Down() || Input.GetKeyDown(GameData.controls.rotateItemLeft) || InputManager.TouchInput.rotateLeft);
 	}
 
+	public static bool RotateObjectXPositive()
+	{
+		return !InputManager.MenuIsActive(false) && (InputManager.ConsoleInput.R2Down() || Input.GetKeyDown(KeyCode.Z) || InputManager.TouchInput.rotateRight);
+	}
+
+	// Token: 0x06000581 RID: 1409 RVA: 0x00006A88 File Offset: 0x00004C88
+	public static bool RotateObjectXNegative()
+	{
+		return !InputManager.MenuIsActive(false) && (InputManager.ConsoleInput.L2Down() || Input.GetKeyDown(KeyCode.X) || InputManager.TouchInput.rotateLeft);
+	}
+
+		public static bool RotateObjectZPositive()
+	{
+		return !InputManager.MenuIsActive(false) && (InputManager.ConsoleInput.R2Down() || Input.GetKeyDown(KeyCode.C) || InputManager.TouchInput.rotateRight);
+	}
+
+	// Token: 0x06000581 RID: 1409 RVA: 0x00006A88 File Offset: 0x00004C88
+	public static bool RotateObjectZNegative()
+	{
+		return !InputManager.MenuIsActive(false) && (InputManager.ConsoleInput.L2Down() || Input.GetKeyDown(KeyCode.V) || InputManager.TouchInput.rotateLeft);
+	}
+
 	// Token: 0x06000582 RID: 1410 RVA: 0x00006AB3 File Offset: 0x00004CB3
 	public static bool ToggleBuildMode()
 	{
@@ -246,6 +268,17 @@ public class InputManager : MonoBehaviour
 	public static bool Back()
 	{
 		return InputManager.ConsoleInput.CircleDown() || Input.GetKeyDown(KeyCode.Escape);
+	}
+
+	// Token: 0x06000587 RID: 1415 RVA: 0x000021BF File Offset: 0x000003BF
+	public InputManager()
+	{
+	}
+
+	// Token: 0x06000588 RID: 1416 RVA: 0x00006B1A File Offset: 0x00004D1A
+	// Note: this type is marked as 'beforefieldinit'.
+	static InputManager()
+	{
 	}
 
 	// Token: 0x040006D4 RID: 1748
@@ -406,6 +439,12 @@ public class InputManager : MonoBehaviour
 				}
 			}
 			return new Vector2(0f, 0f);
+		}
+
+		// Token: 0x0600059A RID: 1434 RVA: 0x0001B218 File Offset: 0x00019418
+		// Note: this type is marked as 'beforefieldinit'.
+		static TouchInput()
+		{
 		}
 
 		// Token: 0x040006DA RID: 1754
