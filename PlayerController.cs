@@ -153,9 +153,16 @@ public class PlayerController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		this.gravity = Mathf.Abs(Physics.gravity.y * 1.4f);
-		if (InputManager.Jump() && !this.FlyMode && !this.isGrounded && this.enableFlying && !this.playerSettings.simulatedRagdoll.RagdollModeEnabled && LevelManager.BuildModeOn)
-		{
-			this.FlyMode = !this.FlyMode;
+		if (InputManager.FlyInPlayMode()){
+			if (InputManager.Jump() && !this.FlyMode && !this.isGrounded && this.enableFlying && !this.playerSettings.simulatedRagdoll.RagdollModeEnabled && LevelManager.BuildModeOn)
+			{
+				this.FlyMode = !this.FlyMode;
+			}
+		} else {
+			if (InputManager.Jump() && !this.FlyMode && !this.isGrounded && this.enableFlying && !this.playerSettings.simulatedRagdoll.RagdollModeEnabled)
+			{
+				this.FlyMode = !this.FlyMode;
+			}
 		}
 		if (!this.playerSettings.simulatedRagdoll.RagdollModeEnabled && this.controller.enabled)
 		{
