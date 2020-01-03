@@ -155,6 +155,9 @@ public class PlayerController : MonoBehaviour
 		this.gravity = Mathf.Abs(Physics.gravity.y * 1.4f);
 		if (InputManager.FlyInPlayMode())
 		{
+			if (!LevelManager.BuildModeOn) {
+				this.FlyMode = false;
+			}
 			if (InputManager.Jump() && !this.FlyMode && !this.isGrounded && this.enableFlying && !this.playerSettings.simulatedRagdoll.RagdollModeEnabled && LevelManager.BuildModeOn)
 			{
 				this.FlyMode = !this.FlyMode;
