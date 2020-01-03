@@ -101,11 +101,9 @@ public class PlayerController : MonoBehaviour
 	// Token: 0x060000DA RID: 218
 	private void OnBuildModeToggle(bool buildModeOn)
 	{
-		if (!buildModeOn)
+		if (!buildModeOn && InputManager.FlyInPlayMode())
 		{
-			if (!InputManager.FlyInPlayMode()) {
-				this.FlyMode = false;
-			}
+			this.FlyMode = false;
 		}
 	}
 
