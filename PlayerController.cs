@@ -155,7 +155,8 @@ public class PlayerController : MonoBehaviour
 		this.gravity = Mathf.Abs(Physics.gravity.y * 1.4f);
 		if (InputManager.FlyInPlayMode())
 		{
-			if (!LevelManager.BuildModeOn) {
+			if (!LevelManager.BuildModeOn)
+			{
 				this.FlyMode = false;
 			}
 			if (InputManager.Jump() && !this.FlyMode && !this.isGrounded && this.enableFlying && !this.playerSettings.simulatedRagdoll.RagdollModeEnabled && LevelManager.BuildModeOn)
@@ -171,6 +172,9 @@ public class PlayerController : MonoBehaviour
 		{
 			this.MoveController();
 			this.controller.transform.eulerAngles = new Vector3(0f, this.playerSettings.mainCamera.transform.eulerAngles.y, 0f);
+		}
+		if (InputManager.DisableFly()) {
+			this.FlyMode = false;
 		}
 	}
 
