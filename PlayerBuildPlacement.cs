@@ -44,12 +44,39 @@ public class PlayerBuildPlacement : MonoBehaviour
 		{
 			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x, this.rotation.eulerAngles.y + 45f, this.rotation.eulerAngles.z);
 		}
+		if (InputManager.RotateObjectXPositive())
+		{
+			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x + 45f, this.rotation.eulerAngles.y, this.rotation.eulerAngles.z);
+		}
+		if (InputManager.RotateObjectXNegative())
+		{
+			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x - 45f, this.rotation.eulerAngles.y, this.rotation.eulerAngles.z);
+		}
+		if (InputManager.RotateObjectZPositive())
+		{
+			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x, this.rotation.eulerAngles.y, this.rotation.eulerAngles.z + 45f);
+		}
+		if (InputManager.RotateObjectZNegative())
+		{
+			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x, this.rotation.eulerAngles.y, this.rotation.eulerAngles.z - 45f);
+		}
 	}
 
 	// Token: 0x060004CD RID: 1229 RVA: 0x000199CC File Offset: 0x00017BCC
 	public Vector3 PositionToGrid(Vector3 position, float offsetMultiplier = 1f)
 	{
 		return new Vector3(Mathf.Round(position.x / (PlayerBuildPlacement.gridSize * offsetMultiplier)) * PlayerBuildPlacement.gridSize * offsetMultiplier, Mathf.Max(Mathf.Round(position.y / (PlayerBuildPlacement.gridSize * offsetMultiplier)) * PlayerBuildPlacement.gridSize * offsetMultiplier, 0f), Mathf.Round(position.z / (PlayerBuildPlacement.gridSize * offsetMultiplier)) * PlayerBuildPlacement.gridSize * offsetMultiplier);
+	}
+
+	// Token: 0x060004CE RID: 1230 RVA: 0x00006037 File Offset: 0x00004237
+	public PlayerBuildPlacement()
+	{
+	}
+
+	// Token: 0x060004CF RID: 1231 RVA: 0x0000606F File Offset: 0x0000426F
+	// Note: this type is marked as 'beforefieldinit'.
+	static PlayerBuildPlacement()
+	{
 	}
 
 	// Token: 0x0400064E RID: 1614
