@@ -4,6 +4,15 @@ using UnityEngine;
 // Token: 0x02000108 RID: 264
 public class InputManager : MonoBehaviour
 {
+
+		public static string RotXPosKey;
+		public static string RotXNegKey;
+		public static string RotZPosKey;
+		public static string RotZNegKey;
+		public static string SmallRotKey;
+		public static string DisableFlyKey;
+		public static bool PlayModeFly;
+
 	// Token: 0x06000569 RID: 1385
 	public static bool MenuIsActive(bool _bypassTimeCheck = false)
 	{
@@ -261,31 +270,31 @@ public class InputManager : MonoBehaviour
 	// Token: 0x06000768 RID: 1896
 	public static bool RotateObjectXPositive()
 	{
-		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(KeyCode.B);
+		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(RotXPosKey);
 	}
 
 	// Token: 0x06000769 RID: 1897
 	public static bool RotateObjectXNegative()
 	{
-		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(KeyCode.N);
+		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(RotXNegKey);
 	}
 
 	// Token: 0x0600076A RID: 1898
 	public static bool RotateObjectZPositive()
 	{
-		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(KeyCode.C);
+		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(RotZPosKey);
 	}
 
 	// Token: 0x0600076B RID: 1899
 	public static bool RotateObjectZNegative()
 	{
-		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(KeyCode.V);
+		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(RotZNegKey);
 	}
 
 	// Token: 0x060007AF RID: 1967
 	public static bool SmallRotation()
 	{
-		if (InputManager.MenuIsActive(false) || !Input.GetKeyDown(KeyCode.I))
+		if (InputManager.MenuIsActive(false) || !Input.GetKeyDown(SmallRotKey))
 		{
 			return !InputManager.SmallRotationActive;
 		}
@@ -301,26 +310,13 @@ public class InputManager : MonoBehaviour
 	// Token: 0x06000830 RID: 2096
 	public static bool FlyInPlayMode()
 	{
-		if (InputManager.MenuIsActive(false) || !Input.GetKeyDown(KeyCode.O))
-		{
-			return !InputManager.FlyInPlayModeActive;
-		}
-		if (InputManager.FlyInPlayModeActive)
-		{
-			InputManager.FlyInPlayModeActive = false;
-			return false;
-		}
-		InputManager.FlyInPlayModeActive = true;
-		return true;
+		return PlayModeFly;
 	}
 
+	// Token: 0x060008FA RID: 2298
 	public static bool DisableFly()
 	{
-		if (Input.GetKeyDown(KeyCode.P)){
-			return true;
-		} else {
-			return false;
-		}
+		return Input.GetKeyDown(DisableFlyKey);
 	}
 
 	// Token: 0x040006D4 RID: 1748
