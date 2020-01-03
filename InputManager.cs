@@ -321,6 +321,7 @@ public class InputManager : MonoBehaviour
 		} else {
 			return false;
 		}
+	}
 
 	// Token: 0x040006D4 RID: 1748
 	private static Vector2 move;
