@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerBuildSystem))]
 public class PlayerBuildPlacement : MonoBehaviour
 {
-	// Token: 0x060004CA RID: 1226 RVA: 0x00005FEA File Offset: 0x000041EA
+	// Token: 0x060004CA RID: 1226
 	private void Awake()
 	{
 		this.playerSettings = base.transform.root.GetComponent<PlayerSettings>();
@@ -13,7 +13,7 @@ public class PlayerBuildPlacement : MonoBehaviour
 		this.rotation = Quaternion.Euler(0f, 0f, 0f);
 	}
 
-	// Token: 0x060004CB RID: 1227 RVA: 0x00006028 File Offset: 0x00004228
+	// Token: 0x060004CB RID: 1227
 	private void Update()
 	{
 		if (LevelManager.BuildModeOn)
@@ -22,7 +22,7 @@ public class PlayerBuildPlacement : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060004CC RID: 1228 RVA: 0x000197FC File Offset: 0x000179FC
+	// Token: 0x060004CC RID: 1228
 	private void UpdateItemPlacement()
 	{
 		if (this.buildSystem.selectedBuildItemVariant == null)
@@ -42,39 +42,44 @@ public class PlayerBuildPlacement : MonoBehaviour
 		}
 		if (InputManager.RotateObjectRight())
 		{
-			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x, this.rotation.eulerAngles.y + 45f, this.rotation.eulerAngles.z);
+			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x, this.rotation.eulerAngles.y + rotationAmount, this.rotation.eulerAngles.z);
 		}
 		if (InputManager.RotateObjectXPositive())
 		{
-			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x + 45f, this.rotation.eulerAngles.y, this.rotation.eulerAngles.z);
+			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x + rotationAmount, this.rotation.eulerAngles.y, this.rotation.eulerAngles.z);
 		}
 		if (InputManager.RotateObjectXNegative())
 		{
-			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x - 45f, this.rotation.eulerAngles.y, this.rotation.eulerAngles.z);
+			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x - rotationAmount, this.rotation.eulerAngles.y, this.rotation.eulerAngles.z);
 		}
 		if (InputManager.RotateObjectZPositive())
 		{
-			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x, this.rotation.eulerAngles.y, this.rotation.eulerAngles.z + 45f);
+			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x, this.rotation.eulerAngles.y, this.rotation.eulerAngles.z + rotationAmount);
 		}
 		if (InputManager.RotateObjectZNegative())
 		{
-			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x, this.rotation.eulerAngles.y, this.rotation.eulerAngles.z - 45f);
+			this.rotation = Quaternion.Euler(this.rotation.eulerAngles.x, this.rotation.eulerAngles.y, this.rotation.eulerAngles.z - rotationAmount);
+		}
+		if (InputManager.SmallRotation())
+		{
+			rotationAmount = 1f;
+		} else {
+			rotationAmount = 45f;
 		}
 	}
 
-	// Token: 0x060004CD RID: 1229 RVA: 0x000199CC File Offset: 0x00017BCC
+	// Token: 0x060004CD RID: 1229
 	public Vector3 PositionToGrid(Vector3 position, float offsetMultiplier = 1f)
 	{
 		return new Vector3(Mathf.Round(position.x / (PlayerBuildPlacement.gridSize * offsetMultiplier)) * PlayerBuildPlacement.gridSize * offsetMultiplier, Mathf.Max(Mathf.Round(position.y / (PlayerBuildPlacement.gridSize * offsetMultiplier)) * PlayerBuildPlacement.gridSize * offsetMultiplier, 0f), Mathf.Round(position.z / (PlayerBuildPlacement.gridSize * offsetMultiplier)) * PlayerBuildPlacement.gridSize * offsetMultiplier);
 	}
 
-	// Token: 0x060004CE RID: 1230 RVA: 0x00006037 File Offset: 0x00004237
+	// Token: 0x060004CE RID: 1230
 	public PlayerBuildPlacement()
 	{
 	}
 
-	// Token: 0x060004CF RID: 1231 RVA: 0x0000606F File Offset: 0x0000426F
-	// Note: this type is marked as 'beforefieldinit'.
+	// Token: 0x060004CF RID: 1231
 	static PlayerBuildPlacement()
 	{
 	}
@@ -114,4 +119,6 @@ public class PlayerBuildPlacement : MonoBehaviour
 
 	// Token: 0x04000659 RID: 1625
 	private readonly float rotationSpeed = 16f;
+
+	private float rotationAmount = 45f;
 }
