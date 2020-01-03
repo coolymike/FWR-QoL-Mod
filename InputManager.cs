@@ -248,6 +248,16 @@ public class InputManager : MonoBehaviour
 		return InputManager.ConsoleInput.CircleDown() || Input.GetKeyDown(KeyCode.Escape);
 	}
 
+	// Token: 0x06000587 RID: 1415
+	public InputManager()
+	{
+	}
+
+	// Token: 0x06000588 RID: 1416
+	static InputManager()
+	{
+	}
+
 	// Token: 0x06000768 RID: 1896
 	public static bool RotateObjectXPositive()
 	{
@@ -303,6 +313,14 @@ public class InputManager : MonoBehaviour
 		InputManager.FlyInPlayModeActive = true;
 		return true;
 	}
+
+	public static bool DisableFly()
+	{
+		if (Input.GetKeyDown(KeyCode.P)){
+			return true;
+		} else {
+			return false;
+		}
 
 	// Token: 0x040006D4 RID: 1748
 	private static Vector2 move;
@@ -468,6 +486,11 @@ public class InputManager : MonoBehaviour
 				}
 			}
 			return new Vector2(0f, 0f);
+		}
+
+		// Token: 0x0600059A RID: 1434
+		static TouchInput()
+		{
 		}
 
 		// Token: 0x040006DA RID: 1754
