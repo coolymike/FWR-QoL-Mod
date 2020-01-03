@@ -6,13 +6,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	// Token: 0x14000003 RID: 3
-	// (add) Token: 0x060000CF RID: 207 RVA: 0x0000AADC File Offset: 0x00008CDC
-	// (remove) Token: 0x060000D0 RID: 208 RVA: 0x0000AB14 File Offset: 0x00008D14
+	// (add) Token: 0x060000CF RID: 207
+	// (remove) Token: 0x060000D0 RID: 208
 	public event PlayerController.ToggleHandler OnGroundedToggle;
 
 	// Token: 0x17000012 RID: 18
-	// (get) Token: 0x060000D1 RID: 209 RVA: 0x00002CF6 File Offset: 0x00000EF6
-	// (set) Token: 0x060000D2 RID: 210 RVA: 0x00002CFE File Offset: 0x00000EFE
+	// (get) Token: 0x060000D1 RID: 209
+	// (set) Token: 0x060000D2 RID: 210
 	public bool IsGrounded
 	{
 		get
@@ -36,13 +36,13 @@ public class PlayerController : MonoBehaviour
 	}
 
 	// Token: 0x14000004 RID: 4
-	// (add) Token: 0x060000D3 RID: 211 RVA: 0x0000AB4C File Offset: 0x00008D4C
-	// (remove) Token: 0x060000D4 RID: 212 RVA: 0x0000AB84 File Offset: 0x00008D84
+	// (add) Token: 0x060000D3 RID: 211
+	// (remove) Token: 0x060000D4 RID: 212
 	public event PlayerController.ToggleHandler OnFlyToggle;
 
 	// Token: 0x17000013 RID: 19
-	// (get) Token: 0x060000D5 RID: 213 RVA: 0x00002D22 File Offset: 0x00000F22
-	// (set) Token: 0x060000D6 RID: 214 RVA: 0x00002D2A File Offset: 0x00000F2A
+	// (get) Token: 0x060000D5 RID: 213
+	// (set) Token: 0x060000D6 RID: 214
 	public bool FlyMode
 	{
 		get
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000D7 RID: 215 RVA: 0x0000ABBC File Offset: 0x00008DBC
+	// Token: 0x060000D7 RID: 215
 	private void Awake()
 	{
 		this.playerSettings = base.transform.root.GetComponent<PlayerSettings>();
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 		this.OnGroundedToggle += this.GroundedToggle;
 	}
 
-	// Token: 0x060000D8 RID: 216 RVA: 0x0000AC2C File Offset: 0x00008E2C
+	// Token: 0x060000D8 RID: 216
 	private void OnDestroy()
 	{
 		this.playerSettings.simulatedRagdoll.OnRagdollToggle -= this.OnRagdollToggle;
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 		this.OnGroundedToggle -= this.GroundedToggle;
 	}
 
-	// Token: 0x060000D9 RID: 217 RVA: 0x0000AC78 File Offset: 0x00008E78
+	// Token: 0x060000D9 RID: 217
 	private void Update()
 	{
 		this.velocityXZ = new Vector3(this.controller.velocity.x, 0f, this.controller.velocity.z).magnitude / this.speed;
@@ -98,16 +98,18 @@ public class PlayerController : MonoBehaviour
 		this.vertical = InputManager.MoveLerp(!this.FlyMode).y * this.moveMultiplier * (this.FlyMode ? 1.4f : 1f);
 	}
 
-	// Token: 0x060000DA RID: 218 RVA: 0x00002D4E File Offset: 0x00000F4E
+	// Token: 0x060000DA RID: 218
 	private void OnBuildModeToggle(bool buildModeOn)
 	{
 		if (!buildModeOn)
 		{
-			this.FlyMode = false;
+			if (!InputManager.FlyInPlayMode()) {
+				this.FlyMode = false;
+			}
 		}
 	}
 
-	// Token: 0x060000DB RID: 219 RVA: 0x00002D5A File Offset: 0x00000F5A
+	// Token: 0x060000DB RID: 219
 	private void OnRagdollToggle(bool ragdollModeEnabled)
 	{
 		this.moveDirection.y = 0f;
@@ -122,7 +124,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000DC RID: 220 RVA: 0x0000AD88 File Offset: 0x00008F88
+	// Token: 0x060000DC RID: 220
 	private void GroundedToggle(bool grounded)
 	{
 		if (LevelManager.BuildModeOn)
@@ -149,20 +151,20 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000DD RID: 221 RVA: 0x0000AE18 File Offset: 0x00009018
+	// Token: 0x060000DD RID: 221
 	private void FixedUpdate()
 	{
 		this.gravity = Mathf.Abs(Physics.gravity.y * 1.4f);
-		if (InputManager.FlyInPlayMode()){
+		if (InputManager.FlyInPlayMode())
+		{
 			if (InputManager.Jump() && !this.FlyMode && !this.isGrounded && this.enableFlying && !this.playerSettings.simulatedRagdoll.RagdollModeEnabled && LevelManager.BuildModeOn)
 			{
 				this.FlyMode = !this.FlyMode;
 			}
-		} else {
-			if (InputManager.Jump() && !this.FlyMode && !this.isGrounded && this.enableFlying && !this.playerSettings.simulatedRagdoll.RagdollModeEnabled)
-			{
-				this.FlyMode = !this.FlyMode;
-			}
+		}
+		else if (InputManager.Jump() && !this.FlyMode && !this.isGrounded && this.enableFlying && !this.playerSettings.simulatedRagdoll.RagdollModeEnabled)
+		{
+			this.FlyMode = !this.FlyMode;
 		}
 		if (!this.playerSettings.simulatedRagdoll.RagdollModeEnabled && this.controller.enabled)
 		{
@@ -171,7 +173,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000DE RID: 222 RVA: 0x0000AEE8 File Offset: 0x000090E8
+	// Token: 0x060000DE RID: 222
 	private void MoveController()
 	{
 		this.IsGrounded = this.controller.isGrounded;
@@ -232,7 +234,7 @@ public class PlayerController : MonoBehaviour
 		this.controller.Move(this.moveDirection * Time.deltaTime);
 	}
 
-	// Token: 0x060000DF RID: 223 RVA: 0x00002D94 File Offset: 0x00000F94
+	// Token: 0x060000DF RID: 223
 	private IEnumerator Jump()
 	{
 		this.moveDirection.y = this.jumpSpeed;
@@ -244,7 +246,7 @@ public class PlayerController : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060000E0 RID: 224 RVA: 0x0000B164 File Offset: 0x00009364
+	// Token: 0x060000E0 RID: 224
 	public PlayerController()
 	{
 	}
