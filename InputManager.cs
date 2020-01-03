@@ -4,15 +4,6 @@ using UnityEngine;
 // Token: 0x02000108 RID: 264
 public class InputManager : MonoBehaviour
 {
-
-		public static string RotXPosKey;
-		public static string RotXNegKey;
-		public static string RotZPosKey;
-		public static string RotZNegKey;
-		public static string SmallRotKey;
-		public static string DisableFlyKey;
-		public static bool PlayModeFly;
-
 	// Token: 0x06000569 RID: 1385
 	public static bool MenuIsActive(bool _bypassTimeCheck = false)
 	{
@@ -270,31 +261,31 @@ public class InputManager : MonoBehaviour
 	// Token: 0x06000768 RID: 1896
 	public static bool RotateObjectXPositive()
 	{
-		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(RotXPosKey);
+		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(InputManager.RotXPosKey);
 	}
 
 	// Token: 0x06000769 RID: 1897
 	public static bool RotateObjectXNegative()
 	{
-		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(RotXNegKey);
+		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(InputManager.RotXNegKey);
 	}
 
 	// Token: 0x0600076A RID: 1898
 	public static bool RotateObjectZPositive()
 	{
-		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(RotZPosKey);
+		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(InputManager.RotZPosKey);
 	}
 
 	// Token: 0x0600076B RID: 1899
 	public static bool RotateObjectZNegative()
 	{
-		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(RotZNegKey);
+		return !InputManager.MenuIsActive(false) && Input.GetKeyDown(InputManager.RotZNegKey);
 	}
 
 	// Token: 0x060007AF RID: 1967
 	public static bool SmallRotation()
 	{
-		if (InputManager.MenuIsActive(false) || !Input.GetKeyDown(SmallRotKey))
+		if (InputManager.MenuIsActive(false) || !Input.GetKeyDown(InputManager.SmallRotKey))
 		{
 			return !InputManager.SmallRotationActive;
 		}
@@ -310,13 +301,13 @@ public class InputManager : MonoBehaviour
 	// Token: 0x06000830 RID: 2096
 	public static bool FlyInPlayMode()
 	{
-		return PlayModeFly;
+		return InputManager.PlayModeFly;
 	}
 
 	// Token: 0x060008FA RID: 2298
 	public static bool DisableFly()
 	{
-		return Input.GetKeyDown(DisableFlyKey);
+		return Input.GetKeyDown(InputManager.DisableFlyKey);
 	}
 
 	// Token: 0x040006D4 RID: 1748
@@ -342,6 +333,27 @@ public class InputManager : MonoBehaviour
 
 	// Token: 0x04000902 RID: 2306
 	private static bool FlyInPlayModeActive;
+
+	// Token: 0x04000BF7 RID: 3063
+	public static KeyCode RotXPosKey = KeyCode.C;
+
+	// Token: 0x04000BF8 RID: 3064
+	public static KeyCode RotXNegKey = KeyCode.V;
+
+	// Token: 0x04000BF9 RID: 3065
+	public static KeyCode RotZPosKey = KeyCode.B;
+
+	// Token: 0x04000BFA RID: 3066
+	public static KeyCode RotZNegKey = KeyCode.N;
+
+	// Token: 0x04000BFB RID: 3067
+	public static KeyCode SmallRotKey = KeyCode.I;
+
+	// Token: 0x04000BFC RID: 3068
+	public static KeyCode DisableFlyKey = KeyCode.P;
+
+	// Token: 0x04000BFD RID: 3069
+	public static bool PlayModeFly = true;
 
 	// Token: 0x02000109 RID: 265
 	public static class PcInput
