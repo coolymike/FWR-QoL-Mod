@@ -25,11 +25,6 @@ public class UIWorldStats : MonoBehaviour
 		{
 			return;
 		}
-		if (InputManager.DebugKeyHeld())
-		{
-			this.statsText.text = File.ReadAllText(Application.persistentDataPath + "\\mod_settings.txt").Replace('\n', ' ');
-			return;
-		}
 		this.statsText.text = "";
 		Text text = this.statsText;
 		text.text = text.text + "Building Blocks: " + WorldData.GetBuildItemsInScene(false).ToString("N0");
@@ -45,6 +40,11 @@ public class UIWorldStats : MonoBehaviour
 		text6.text += "\n";
 		Text text7 = this.statsText;
 		text7.text = text7.text + "Flags: " + WorldData.ItemsPlacedFromBuildItemID(584134).ToString("N0");
+	}
+
+	// Token: 0x0600030C RID: 780
+	public UIWorldStats()
+	{
 	}
 
 	// Token: 0x04000475 RID: 1141
