@@ -11,6 +11,12 @@ public class GoToSceneAfterVideo : MonoBehaviour
 	// Token: 0x06000438 RID: 1080
 	private void Start()
 	{
+		if (!File.Exists(Application.persistentDataPath + "\\mod_settings.txt"))
+		{
+			base.StartCoroutine(this.SceneChangeRoutine());
+			base.StartCoroutine(this.BackupSceneChangeRoutineWithoutVideo());
+			return;
+		}
 		string[] array = File.ReadAllText(Application.persistentDataPath + "\\mod_settings.txt").Split(new char[]
 		{
 			'\n'
