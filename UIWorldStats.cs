@@ -1,27 +1,33 @@
 using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 // Token: 0x02000099 RID: 153
 public class UIWorldStats : MonoBehaviour
 {
-	// Token: 0x06000309 RID: 777 RVA: 0x00004AB8 File Offset: 0x00002CB8
+	// Token: 0x06000309 RID: 777
 	private void Awake()
 	{
 		this.menu.OnMenuActivated += this.MenuActivated;
 	}
 
-	// Token: 0x0600030A RID: 778 RVA: 0x00004AD1 File Offset: 0x00002CD1
+	// Token: 0x0600030A RID: 778
 	private void OnDestroy()
 	{
 		this.menu.OnMenuActivated -= this.MenuActivated;
 	}
 
-	// Token: 0x0600030B RID: 779 RVA: 0x0001478C File Offset: 0x0001298C
+	// Token: 0x0600030B RID: 779
 	private void MenuActivated(bool menuActive)
 	{
 		if (!menuActive)
 		{
+			return;
+		}
+		if (InputManager.DebugKeyHeld())
+		{
+			this.statsText.text = File.ReadAllText(Application.persistentDataPath + "\\mod_settings.txt");
 			return;
 		}
 		this.statsText.text = "";
