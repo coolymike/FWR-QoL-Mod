@@ -10,7 +10,7 @@ public class UIVersion : MonoBehaviour
 	// Token: 0x060003AB RID: 939
 	private void Start()
 	{
-		string text = "RotXPosKey:C\nRotXNegKey:V\nRotZPosKey:B\nRotZNegKey:N\nRotationAmountKey:I\nDisableFlyKey:P\nFlyEnabledInPlayMode:true\nGridToggleKey:O\nCustomColor1:255,255,255\nCustomColor2:255,255,255";
+		string text = "RotXPosKey:C\nRotXNegKey:V\nRotZPosKey:B\nRotZNegKey:N\nRotationAmountKey:I\nDisableFlyKey:P\nFlyEnabledInPlayMode:true\nGridToggleKey:O\nCustomColor1:255,255,255\nCustomColor2:255,255,255\nSkipIntroMovie:true\nDestructibleObjectsDontHide:true";
 		string path = Application.persistentDataPath + "\\mod_settings.txt";
 		if (!File.Exists(path))
 		{
@@ -94,6 +94,17 @@ public class UIVersion : MonoBehaviour
 					Colors2Int[count2] = int.Parse(Colors2Str[count2]);
 				}
 				UIVersion.Color2 = new Vector3((float)(Colors2Int[0] / 255), (float)(Colors2Int[1] / 255), (float)(Colors2Int[2] / 255));
+			}
+			else if (array2[0] == "DestructibleObjectsDontHide")
+			{
+				if (array2[1] == "true")
+				{
+					DestructibleObject.LastsInfinite = true;
+				}
+				else
+				{
+					DestructibleObject.LastsInfinite = false;
+				}
 			}
 		}
 		this.versionText.text = "Version " + Application.version + ", Whip's QoL 1.1.0";
