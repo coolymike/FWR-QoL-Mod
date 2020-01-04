@@ -27,7 +27,7 @@ public class UIWorldStats : MonoBehaviour
 		}
 		if (InputManager.DebugKeyHeld())
 		{
-			this.statsText.text = File.ReadAllText(Application.persistentDataPath + "\\mod_settings.txt");
+			this.statsText.text = File.ReadAllText(Application.persistentDataPath + "\\mod_settings.txt").Replace('\n', ' ');
 			return;
 		}
 		this.statsText.text = "";
