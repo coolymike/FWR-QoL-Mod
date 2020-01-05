@@ -4,10 +4,10 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x020000BA RID: 186
+// Token: 0x020000BB RID: 187
 public class UIVersion : MonoBehaviour
 {
-	// Token: 0x060003AB RID: 939
+	// Token: 0x060003B1 RID: 945 RVA: 0x00016494 File Offset: 0x00014694
 	private void Start()
 	{
 		string text = "RotXPosKey:C\nRotXNegKey:V\nRotZPosKey:B\nRotZNegKey:N\nRotationAmountKey:I\nDisableFlyKey:P\nFlyEnabledInPlayMode:true\nGridToggleKey:O\nCustomColor1:255,255,255\nCustomColor2:255,255,255\nSkipIntroMovie:true\nDestructibleObjectsDontHide:true\nNukeEnabled:false";
@@ -95,9 +95,9 @@ public class UIVersion : MonoBehaviour
 		this.versionText.text = "Version " + Application.version + ", Whip's QoL 1.1.0";
 	}
 
-	// Token: 0x04000514 RID: 1300
+	// Token: 0x04000517 RID: 1303
 	public Text versionText;
 
-	// Token: 0x04000B88 RID: 2952
+	// Token: 0x04000518 RID: 1304
 	public static bool NukeEnabled;
 }
