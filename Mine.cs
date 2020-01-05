@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-// Token: 0x0200006C RID: 108
+// Token: 0x0200006D RID: 109
 public class Mine : MonoBehaviour
 {
-	// Token: 0x0600021D RID: 541
+	// Token: 0x06000223 RID: 547 RVA: 0x00010A04 File Offset: 0x0000EC04
 	private void Start()
 	{
 		this.spawnedExplosion = UnityEngine.Object.Instantiate<GameObject>(this.explosionEffect, base.transform.position, base.transform.rotation);
@@ -15,13 +15,13 @@ public class Mine : MonoBehaviour
 		LevelManager.OnBuildModeToggle += this.OnBuildModeToggle;
 	}
 
-	// Token: 0x0600021E RID: 542
+	// Token: 0x06000224 RID: 548 RVA: 0x00003EF3 File Offset: 0x000020F3
 	private void OnDestroy()
 	{
 		LevelManager.OnBuildModeToggle -= this.OnBuildModeToggle;
 	}
 
-	// Token: 0x0600021F RID: 543
+	// Token: 0x06000225 RID: 549 RVA: 0x00010A68 File Offset: 0x0000EC68
 	private void FixedUpdate()
 	{
 		if (this.remoteDetonate && !this.bombTimerActivated)
@@ -38,7 +38,7 @@ public class Mine : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000220 RID: 544
+	// Token: 0x06000226 RID: 550 RVA: 0x00003F06 File Offset: 0x00002106
 	private void OnBuildModeToggle(bool buildModeOn)
 	{
 		if (buildModeOn)
@@ -47,13 +47,13 @@ public class Mine : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000221 RID: 545
+	// Token: 0x06000227 RID: 551 RVA: 0x00003F11 File Offset: 0x00002111
 	private void OnDisable()
 	{
 		this.Reset();
 	}
 
-	// Token: 0x06000222 RID: 546
+	// Token: 0x06000228 RID: 552 RVA: 0x00003F19 File Offset: 0x00002119
 	private IEnumerator BombTimer()
 	{
 		this.bombTimerActivated = true;
@@ -65,7 +65,7 @@ public class Mine : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000223 RID: 547
+	// Token: 0x06000229 RID: 553 RVA: 0x00010AC0 File Offset: 0x0000ECC0
 	public void Reset()
 	{
 		this.detonated = false;
@@ -78,7 +78,7 @@ public class Mine : MonoBehaviour
 		this.mineObject.SetActive(true);
 	}
 
-	// Token: 0x06000224 RID: 548
+	// Token: 0x0600022A RID: 554 RVA: 0x00003F28 File Offset: 0x00002128
 	public void CollisionDetected(Collision collision)
 	{
 		if (this.detonateOnTouchAnything)
@@ -98,7 +98,7 @@ public class Mine : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000225 RID: 549
+	// Token: 0x0600022B RID: 555 RVA: 0x00010B18 File Offset: 0x0000ED18
 	private void Detonate()
 	{
 		if (this.detonated || LevelManager.BuildModeOn)
@@ -147,7 +147,7 @@ public class Mine : MonoBehaviour
 		this.detonated = true;
 	}
 
-	// Token: 0x06000226 RID: 550
+	// Token: 0x0600022C RID: 556 RVA: 0x00003F62 File Offset: 0x00002162
 	private void FractureObjects(Transform thing)
 	{
 		this.destructibleObject = thing.root.GetComponentInChildren<DestructibleObject>();
@@ -157,45 +157,45 @@ public class Mine : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0400031F RID: 799
+	// Token: 0x04000322 RID: 802
 	public GameObject explosionEffect;
 
-	// Token: 0x04000320 RID: 800
+	// Token: 0x04000323 RID: 803
 	private GameObject spawnedExplosion;
 
-	// Token: 0x04000321 RID: 801
+	// Token: 0x04000324 RID: 804
 	public GameObject mineObject;
 
-	// Token: 0x04000322 RID: 802
+	// Token: 0x04000325 RID: 805
 	private MeshRenderer[] meshRenderers;
 
-	// Token: 0x04000323 RID: 803
+	// Token: 0x04000326 RID: 806
 	public bool detonateOnTouchAnything;
 
-	// Token: 0x04000324 RID: 804
+	// Token: 0x04000327 RID: 807
 	public bool dismemberRagdolls;
 
-	// Token: 0x04000325 RID: 805
+	// Token: 0x04000328 RID: 808
 	public float radius = 10f;
 
-	// Token: 0x04000326 RID: 806
+	// Token: 0x04000329 RID: 809
 	public float power = 50f;
 
-	// Token: 0x04000327 RID: 807
+	// Token: 0x0400032A RID: 810
 	public bool remoteDetonate;
 
-	// Token: 0x04000328 RID: 808
+	// Token: 0x0400032B RID: 811
 	private bool detonated;
 
-	// Token: 0x04000329 RID: 809
+	// Token: 0x0400032C RID: 812
 	private bool bombTimerActivated;
 
-	// Token: 0x0400032A RID: 810
+	// Token: 0x0400032D RID: 813
 	private Collider[] colliders;
 
-	// Token: 0x0400032B RID: 811
+	// Token: 0x0400032E RID: 814
 	private Mine anotherMine;
 
-	// Token: 0x0400032C RID: 812
+	// Token: 0x0400032F RID: 815
 	private DestructibleObject destructibleObject;
 }
