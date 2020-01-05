@@ -10,7 +10,7 @@ public class UIVersion : MonoBehaviour
 	// Token: 0x060003AB RID: 939
 	private void Start()
 	{
-		string text = "RotXPosKey:C\nRotXNegKey:V\nRotZPosKey:B\nRotZNegKey:N\nRotationAmountKey:I\nDisableFlyKey:P\nFlyEnabledInPlayMode:true\nGridToggleKey:O\nCustomColor1:255,255,255\nCustomColor2:255,255,255\nSkipIntroMovie:true\nDestructibleObjectsDontHide:true";
+		string text = "RotXPosKey:C\nRotXNegKey:V\nRotZPosKey:B\nRotZNegKey:N\nRotationAmountKey:I\nDisableFlyKey:P\nFlyEnabledInPlayMode:true\nGridToggleKey:O\nCustomColor1:255,255,255\nCustomColor2:255,255,255\nSkipIntroMovie:true\nDestructibleObjectsDontHide:true\nNukeEnabled:false";
 		string path = Application.persistentDataPath + "\\mod_settings.txt";
 		if (!File.Exists(path))
 		{
@@ -69,32 +69,6 @@ public class UIVersion : MonoBehaviour
 			{
 				InputManager.GridToggleKey = (KeyCode)Enum.Parse(typeof(KeyCode), array2[1]);
 			}
-			else if (array2[0] == "CustomColor1")
-			{
-				string[] Colors1Str = array2[1].Split(new char[]
-				{
-					','
-				});
-				int[] Colors1Int = new int[Colors1Str.Length];
-				for (int count = 0; count < Colors1Str.Length; count++)
-				{
-					Colors1Int[count] = int.Parse(Colors1Str[count]);
-				}
-				UIVersion.Color1 = new Vector3((float)(Colors1Int[0] / 255), (float)(Colors1Int[1] / 255), (float)(Colors1Int[2] / 255));
-			}
-			else if (array2[0] == "CustomColor2")
-			{
-				string[] Colors2Str = array2[1].Split(new char[]
-				{
-					','
-				});
-				int[] Colors2Int = new int[Colors2Str.Length];
-				for (int count2 = 0; count2 < Colors2Str.Length; count2++)
-				{
-					Colors2Int[count2] = int.Parse(Colors2Str[count2]);
-				}
-				UIVersion.Color2 = new Vector3((float)(Colors2Int[0] / 255), (float)(Colors2Int[1] / 255), (float)(Colors2Int[2] / 255));
-			}
 			else if (array2[0] == "DestructibleObjectsDontHide")
 			{
 				if (array2[1] == "true")
@@ -106,6 +80,17 @@ public class UIVersion : MonoBehaviour
 					DestructibleObject.LastsInfinite = false;
 				}
 			}
+			else if (array2[0] == "NukeEnabled")
+			{
+				if (array2[1] == "true")
+				{
+					UIVersion.NukeEnabled = true;
+				}
+				else
+				{
+					UIVersion.NukeEnabled = false;
+				}
+			}
 		}
 		this.versionText.text = "Version " + Application.version + ", Whip's QoL 1.1.0";
 	}
@@ -113,9 +98,6 @@ public class UIVersion : MonoBehaviour
 	// Token: 0x04000514 RID: 1300
 	public Text versionText;
 
-	// Token: 0x0400097F RID: 2431
-	public static Vector3 Color1 = new Vector3(0f, 0f, 0f);
-
-	// Token: 0x04000980 RID: 2432
-	public static Vector3 Color2 = new Vector3(0f, 0f, 0f);
+	// Token: 0x04000B88 RID: 2952
+	public static bool NukeEnabled;
 }
