@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-// Token: 0x020000E7 RID: 231
+// Token: 0x020000E8 RID: 232
 public class WorldStyle : MonoBehaviour
 {
-	// Token: 0x06000497 RID: 1175
+	// Token: 0x0600049E RID: 1182 RVA: 0x00005CF8 File Offset: 0x00003EF8
 	private void Start()
 	{
 		GameData.OnStyleChanged += this.SetFloorColor;
@@ -15,14 +15,14 @@ public class WorldStyle : MonoBehaviour
 		this.SetItemColor();
 	}
 
-	// Token: 0x06000498 RID: 1176
+	// Token: 0x0600049F RID: 1183 RVA: 0x00005D28 File Offset: 0x00003F28
 	private void OnDestroy()
 	{
 		GameData.OnStyleChanged -= this.SetFloorColor;
 		GameData.OnStyleChanged -= this.SetItemColor;
 	}
 
-	// Token: 0x06000499 RID: 1177
+	// Token: 0x060004A0 RID: 1184 RVA: 0x00018FA4 File Offset: 0x000171A4
 	private void SetFloorColor()
 	{
 		if (this.colors.TryGetValue(GameData.styling.FloorColor, out this.selectedFloorColor))
@@ -31,7 +31,7 @@ public class WorldStyle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600049A RID: 1178
+	// Token: 0x060004A1 RID: 1185 RVA: 0x00019004 File Offset: 0x00017204
 	private void SetItemColor()
 	{
 		if (this.colors.TryGetValue(GameData.styling.BlockColor, out this.selectedItemColor))
@@ -40,7 +40,7 @@ public class WorldStyle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600049B RID: 1179
+	// Token: 0x060004A2 RID: 1186 RVA: 0x00019064 File Offset: 0x00017264
 	public WorldStyle()
 	{
 		string[] array = File.ReadAllText(WorldStyle.path).Split(new char[]
@@ -55,29 +55,29 @@ public class WorldStyle : MonoBehaviour
 			});
 			if (array2[0] == "CustomColor1")
 			{
-				string[] Colors1Str = array2[1].Split(new char[]
+				string[] array3 = array2[1].Split(new char[]
 				{
 					','
 				});
-				int[] Colors1Int = new int[Colors1Str.Length];
-				for (int count = 0; count < Colors1Str.Length; count++)
+				int[] array4 = new int[array3.Length];
+				for (int j = 0; j < array3.Length; j++)
 				{
-					Colors1Int[count] = int.Parse(Colors1Str[count]);
+					array4[j] = int.Parse(array3[j]);
 				}
-				WorldStyle.Color1 = new Vector3((float)(Colors1Int[0] / 255), (float)(Colors1Int[1] / 255), (float)(Colors1Int[2] / 255));
+				WorldStyle.Color1 = new Vector3((float)(array4[0] / 255), (float)(array4[1] / 255), (float)(array4[2] / 255));
 			}
 			else if (array2[0] == "CustomColor2")
 			{
-				string[] Colors2Str = array2[1].Split(new char[]
+				string[] array5 = array2[1].Split(new char[]
 				{
 					','
 				});
-				int[] Colors2Int = new int[Colors2Str.Length];
-				for (int count2 = 0; count2 < Colors2Str.Length; count2++)
+				int[] array6 = new int[array5.Length];
+				for (int k = 0; k < array5.Length; k++)
 				{
-					Colors2Int[count2] = int.Parse(Colors2Str[count2]);
+					array6[k] = int.Parse(array5[k]);
 				}
-				WorldStyle.Color2 = new Vector3((float)(Colors2Int[0] / 255), (float)(Colors2Int[1] / 255), (float)(Colors2Int[2] / 255));
+				WorldStyle.Color2 = new Vector3((float)(array6[0] / 255), (float)(array6[1] / 255), (float)(array6[2] / 255));
 			}
 		}
 		this.colors = new Dictionary<WorldStyle.ColorStyle, Vector3>
@@ -129,61 +129,61 @@ public class WorldStyle : MonoBehaviour
 		};
 	}
 
-	// Token: 0x06000790 RID: 1936
+	// Token: 0x060004A3 RID: 1187 RVA: 0x000192C8 File Offset: 0x000174C8
 	static WorldStyle()
 	{
 		WorldStyle.Color1 = new Vector3(0f, 0f, 0f);
 		WorldStyle.Color2 = new Vector3(0f, 0f, 0f);
 	}
 
-	// Token: 0x04000615 RID: 1557
+	// Token: 0x0400061B RID: 1563
 	private Dictionary<WorldStyle.ColorStyle, Vector3> colors;
 
-	// Token: 0x04000616 RID: 1558
+	// Token: 0x0400061C RID: 1564
 	public Material floorMaterial;
 
-	// Token: 0x04000617 RID: 1559
+	// Token: 0x0400061D RID: 1565
 	public Material ItemMaterial;
 
-	// Token: 0x04000618 RID: 1560
+	// Token: 0x0400061E RID: 1566
 	private Vector3 selectedFloorColor;
 
-	// Token: 0x04000619 RID: 1561
+	// Token: 0x0400061F RID: 1567
 	private Vector3 selectedItemColor;
 
-	// Token: 0x040009CB RID: 2507
+	// Token: 0x04000620 RID: 1568
 	public static Vector3 Color1;
 
-	// Token: 0x040009CC RID: 2508
+	// Token: 0x04000621 RID: 1569
 	public static Vector3 Color2;
 
-	// Token: 0x040009EF RID: 2543
+	// Token: 0x04000622 RID: 1570
 	private static string path = Application.persistentDataPath + "\\mod_settings.txt";
 
-	// Token: 0x020000E8 RID: 232
+	// Token: 0x020000E9 RID: 233
 	public enum ColorStyle
 	{
-		// Token: 0x04000621 RID: 1569
-		White,
-		// Token: 0x04000622 RID: 1570
-		Grey,
-		// Token: 0x04000623 RID: 1571
-		Black,
 		// Token: 0x04000624 RID: 1572
-		Blue,
+		White,
 		// Token: 0x04000625 RID: 1573
-		Green,
+		Grey,
 		// Token: 0x04000626 RID: 1574
-		Red,
+		Black,
 		// Token: 0x04000627 RID: 1575
-		Yellow,
+		Blue,
 		// Token: 0x04000628 RID: 1576
-		Orange,
+		Green,
 		// Token: 0x04000629 RID: 1577
-		Purple,
+		Red,
 		// Token: 0x0400062A RID: 1578
-		Custom1,
+		Yellow,
 		// Token: 0x0400062B RID: 1579
+		Orange,
+		// Token: 0x0400062C RID: 1580
+		Purple,
+		// Token: 0x0400062D RID: 1581
+		Custom1,
+		// Token: 0x0400062E RID: 1582
 		Custom2
 	}
 }
