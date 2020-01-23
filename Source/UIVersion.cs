@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.IO;
 using System.Text;
@@ -169,7 +169,7 @@ public class UIVersion : MonoBehaviour
 				}
 			}
 		}
-		this.versionText.text = "Version " + Application.version + ", Whip's QoL 1.4.0";
+		this.versionText.text = "Version " + Application.version + ", Whip's Mod 1.4.0";
 	}
 
 	// Token: 0x04000520 RID: 1312
