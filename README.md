@@ -33,4 +33,11 @@ Fixed bug that would cause the world to appear white when mod_settings.txt doesn
 Added unused lines back in the tutorial
 Added destructible objects breaking semi-realistically
 Changed Name
+1.5.0:
+Added God Mode (enable in mod_settings)
+Added Scaling objects!
+How to change the size of an object:
+Hold M, K, and or L for X, Y, and Z scaling
+Use the mouse scrollwheel to scale up and down
+Press Y to reset scale
 ```
