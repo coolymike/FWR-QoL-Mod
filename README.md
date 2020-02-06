@@ -49,4 +49,9 @@ How to change the size of an object:
 Hold M, K, and or L for X, Y, and Z scaling
 Use the mouse scrollwheel to scale up and down
 Press Y to reset scale
+1.6.0:
+Added option to have physics on build objects (enable in mod settings "ForcePhysics")
+Added custom slow motion time scale (can break the game with values that are too extreme)
+Added custom scale increase (for even bigger objects/more detailed scale)
+Changed how scaling works, using the scrollwheel now changes the scale of an object even without holding M, K, or L. Holding any of those keys scales it along only X, Y, and or Z respectively
 ```
