@@ -57,4 +57,5 @@ Added option to have physics on build objects (enable in mod settings "ForcePhys
 Added custom slow motion time scale (can break the game with values that are too extreme)
 Added custom scale increase (for even bigger objects/more detailed scale)
 Changed how scaling works, using the scrollwheel now changes the scale of an object even without holding M, K, or L. Holding any of those keys scales it along only X, Y, and or Z respectively
+Changed ResetScaleKey to not only reset the scale, but also the rotation of an object
 ```
