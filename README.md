@@ -1,8 +1,8 @@
 # FWR-Mod
-![Discord](https://img.shields.io/discord/619239179624382464?label=Discord&logo=Discord&style=for-the-badge)
+[![Discord](https://img.shields.io/discord/619239179624382464?label=Discord&logo=Discord&style=for-the-badge)](https://discord.gg/S3NC65b)
 ![GitHub All Releases](https://img.shields.io/github/downloads/coolymike/FWR-QoL-Mod/total?logo=Github&style=for-the-badge)
 
-![alt text](https://raw.githubusercontent.com/coolymike/FWR-QoL-Mod/master/whipsmod.png)
+![Logo](https://raw.githubusercontent.com/coolymike/FWR-QoL-Mod/master/whipsmod.png)
 
 Mod for Fun with Ragdolls: The Game
 
