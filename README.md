@@ -58,4 +58,13 @@ Added custom slow motion time scale (can break the game with values that are too
 Added custom scale increase (for even bigger objects/more detailed scale)
 Changed how scaling works, using the scrollwheel now changes the scale of an object even without holding M, K, or L. Holding any of those keys scales it along only X, Y, and or Z respectively
 Changed ResetScaleKey to not only reset the scale, but also the rotation of an object
+1.6.1:
+Changed physics toggle to be on a key (Default "1" on top row)
+Scroll wheel can now be used to change the distance you're holding objects at in play mode
+Fixed bug where physics objects would spawn slightly below the intended spawnpoint
+Internal changes
+1.6.3:
+Added full world scaling
+1.6.4:
+Added full world physics
 ```
