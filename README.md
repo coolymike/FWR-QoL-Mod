@@ -67,4 +67,8 @@ Internal changes
 Added full world scaling
 1.6.4:
 Added full world physics
+1.7.0:
+Added AntiTouchObject toggle (Default button: 2)
+What this does is when a physics enabled build object also has this, touching the object will make ragdolls and the player go into ragdoll mode.
+Added NavMeshSize (set in mod_settings, default 1.0), which makes the "ragdolls are stupid beyond this point" signs not valid as increasing the value will make the ragdolls smart for a bigger area.
 ```
