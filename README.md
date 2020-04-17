@@ -1,6 +1,6 @@
 # FWR-Mod
 [![Discord](https://img.shields.io/discord/619239179624382464?label=Discord&logo=Discord&style=for-the-badge)](https://discord.gg/S3NC65b)
-![GitHub Releases](https://img.shields.io/github/downloads/coolymike/FWR-QoL-Mod/latest/total?label=Latest%20Version%20Downloads&logo=Github&style=for-the-badge)
+![GitHub Releases](https://img.shields.io/github/downloads/coolymike/FWR-QoL-Mod/total?label=Downloads&logo=Github&style=for-the-badge)
 
 ![Logo](https://raw.githubusercontent.com/coolymike/FWR-QoL-Mod/master/whipsmod.png)
 
