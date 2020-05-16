@@ -6,14 +6,7 @@
 
 Mod for Fun with Ragdolls: The Game
 
-Installation instructions:
-Donwload Assembly-CSharp.dll
-Go to your steam library, right click Fun with Ragdolls: The Game
-Click Properties, then Local Files
-Click Browse Local Files
-Navigate to Fun with Ragdolls/Fun with Ragdolls_Data/Managed
-Put Assembly-CSharp.dll there, replace the old file
-Start the game, and it's installed!
+[Installation instructions](https://github.com/coolymike/FWR-QoL-Mod/wiki/Installation-Guide)
 
 Full changelog:
 ```
